@@ -31,10 +31,10 @@ public class MapMakerInputs : MonoBehaviour {
 
 		if (Input.GetMouseButton (1)) {
 			if (mouseHit) {
-				Vector3 movement = hitInfo.transform.parent.transform.position;
+				Vector3 movement = hitInfo.transform.parent.transform.parent.transform.position;
 				movement.x += Input.GetAxis ("Mouse X");
 				movement.y += Input.GetAxis ("Mouse Y");
-				hitInfo.transform.parent.transform.position = movement;
+				hitInfo.transform.parent.transform.parent.transform.position = movement;
 			}
 		} else {
 			mouseHit = false;
