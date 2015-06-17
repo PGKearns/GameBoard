@@ -27,12 +27,13 @@ public class TileGeneration : MonoBehaviour {
 
 
 		}
-		startx =  xsize.value;
-		starty =  ysize.value;
+		//update the start position of the next room
+		startx +=  xsize.value;
+		starty +=  ysize.value;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+	//fuck update we dont need it.
 	}
 }
