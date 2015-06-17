@@ -5,6 +5,7 @@ using System.Collections;
 public class MapMakerInputs : MonoBehaviour {
 	private bool mouseHit;
 	private RaycastHit hitInfo = new RaycastHit ();
+	Vector3 movement;
 	// Use this for initialization
 	void Start () {
 	
@@ -31,15 +32,26 @@ public class MapMakerInputs : MonoBehaviour {
 
 		if (Input.GetMouseButton (1)) {
 			if (mouseHit) {
-				Vector3 movement = hitInfo.transform.parent.transform.parent.transform.position;
+				movement = hitInfo.transform.parent.transform.parent.transform.position;
 				movement.x += Input.GetAxis ("Mouse X");
 				movement.y += Input.GetAxis ("Mouse Y");
+				//movement = Vector3( Mathf.Round( movement.x), Mathf.Round( movement.y),0);    
 				hitInfo.transform.parent.transform.parent.transform.position = movement;
+
 			}
 		} else {
+
+			movement.x = ( Mathf.Round( movement.x));    
+			movement.y = ( Mathf.Round( movement.y));
+			if(Input.GetMouseButtonUp(1)&&mouseHit){
+				hitInfo.transform.parent.transform.parent.transform.position = movement;
+				Debug.Log (movement.x);
+			}
 			mouseHit = false;
+
 		}
-		}
+
+	}
 
 
 
