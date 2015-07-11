@@ -6,6 +6,7 @@ public class MapMakerInputs : MonoBehaviour {
 	private bool mouseHit;
 	private RaycastHit hitInfo = new RaycastHit ();
 	Vector3 movement;
+	Quaternion rotation;
 	// Use this for initialization
 	void Start () {
 	
@@ -51,6 +52,17 @@ public class MapMakerInputs : MonoBehaviour {
 
 		}
 
+		if (Input.GetKeyDown (KeyCode.R)) {
+			bool hit = Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hitInfo);
+			if (hit){
+				Debug.Log ("get here");
+				rotation = hitInfo.transform.parent.transform.parent.rotation;
+				rotation.Set(0f,0f,45f,0f);
+				hitInfo.transform.parent.transform.transform.parent.rotation = rotation;
+			}
+
+
+		}
 	}
 
 
